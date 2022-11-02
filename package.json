@@ -1,7 +1,8 @@
 {
-  "name": "fresh-extension",
-  "displayName": "fresh-extension",
-  "description": "",
+  "name": "insert-code-suggestion",
+  "publisher": "dtinth",
+  "displayName": "Codex Insert",
+  "description": "Use OpenAI Codex to insert code at the current cursor position",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.72.0"
@@ -10,14 +11,41 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:fresh-extension.helloWorld"
+    "onCommand:insert-code-suggestion.insert"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "fresh-extension.helloWorld",
-        "title": "Hello World"
+        "command": "insert-code-suggestion.insert",
+        "title": "Insert Code Suggestion"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Insert code suggestion",
+        "properties": {
+          "insertCodeSuggestion.apiKey": {
+            "type": "string",
+            "default": "",
+            "description": "OpenAI API key"
+          },
+          "insertCodeSuggestion.override": {
+            "type": "object",
+            "default": {},
+            "description": "Override options for OpenAI API for fine-tuning"
+          },
+          "insertCodeSuggestion.beforeLength": {
+            "type": "number",
+            "default": 1024,
+            "description": "Number of characters to include before the cursor"
+          },
+          "insertCodeSuggestion.afterLength": {
+            "type": "number",
+            "default": 1024,
+            "description": "Number of characters to include after the cursor"
+          }
+        }
       }
     ]
   },
@@ -30,16 +58,19 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.72.0",
     "@types/glob": "^8.0.0",
     "@types/mocha": "^10.0.0",
     "@types/node": "16.x",
+    "@types/vscode": "^1.72.0",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
+    "@vscode/test-electron": "^2.1.5",
     "eslint": "^8.24.0",
     "glob": "^8.0.3",
     "mocha": "^10.0.0",
-    "typescript": "^4.8.4",
-    "@vscode/test-electron": "^2.1.5"
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "openai": "^3.0.1"
   }
 }

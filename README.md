@@ -1,6 +1,6 @@
-# fresh-extension README
+# insert-code-suggestion README
 
-This is the README for your extension "fresh-extension". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "insert-code-suggestion". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
