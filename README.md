@@ -6,6 +6,10 @@ Use OpenAI Codex to insert code suggestion at the cursor position.
 
 This extension adds a command **"Insert Code Suggestion"** to insert code suggestion at the cursor position. It makes uses of [GPT-3’s Insert](https://openai.com/blog/gpt-3-edit-insert/) capability, which sometimes provides better results than GitHub Copilot, especially when writing documentation comments, as it can utilize the text after the cursor position in addition to the text before the cursor position.
 
+![image](https://user-images.githubusercontent.com/193136/199517326-b0f655d0-c254-4054-b1e4-55001d207f3b.png)
+
+Unlike [GitHub Copilot](https://github.com/features/copilot) that completes code automatically as you type, this extension must be invoked explicitly to insert code suggestion.
+
 ## Requirements
 
 You need to have an OpenAI API key. You can get one [here](https://beta.openai.com/).
