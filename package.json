@@ -11,7 +11,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:insert-code-suggestion.insert"
+    "onCommand:insert-code-suggestion.insert",
+    "onCommand:insert-code-suggestion.edit"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -19,6 +20,10 @@
       {
         "command": "insert-code-suggestion.insert",
         "title": "Insert Code Suggestion"
+      },
+      {
+        "command": "insert-code-suggestion.edit",
+        "title": "Ask AI to Edit Selected Code"
       }
     ],
     "configuration": [
@@ -30,10 +35,15 @@
             "default": "",
             "description": "OpenAI API key"
           },
-          "insertCodeSuggestion.override": {
+          "insertCodeSuggestion.completionOverride": {
             "type": "object",
             "default": {},
-            "description": "Override options for OpenAI API for fine-tuning"
+            "description": "Override options for completion API for fine-tuning"
+          },
+          "insertCodeSuggestion.editOverride": {
+            "type": "object",
+            "default": {},
+            "description": "Override options for edit API for fine-tuning"
           },
           "insertCodeSuggestion.beforeLength": {
             "type": "number",
@@ -44,6 +54,14 @@
             "type": "number",
             "default": 1024,
             "description": "Number of characters to include after the cursor"
+          },
+          "insertCodeSuggestion.editInstructions": {
+            "type": "array",
+            "default": [],
+            "description": "Preset instructions for editing code",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
